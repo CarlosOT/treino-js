@@ -1,5 +1,4 @@
 //TEMPORIZADOR
-
 var temporizador = document.getElementById('temporizador');
 var segundos = 30;
 
@@ -19,21 +18,58 @@ var ativarIntervalo = function() { //função 01
   }, 1000);
 
 };
-ativarIntervalo();
 
-//COMEÇA O JOGO
-let nomeCor = ["AMARELO", "VERMELHO", "AZUL", "VERDE", "ROSA", "LARANJA"];
-let hexaCor = ["#ffff00", "#ff0000", "#0800ff", "#00ff08", "#e100ff", "#ff8c00"];
+//DEFINIÇÕES INICIAIS PARA EXECUÇÃO DO PROGRAMA
 let bloco = document.getElementById('bloco');
 let idPonto = document.getElementById('pontos');
+let idPerdeGanha = document.getElementById('perdeGanha');
+
+let nomeCor = ["BOLA AMARELA", "BOLA VERMELHA", "BOLA AZUL", "BOLA VERDE", "BOLA ROSA", "BOLA LARANJA"];
+let hexaCor = ["#ffff00", "#ff0000", "#0800ff", "#00ff08", "#e100ff", "#ff8c00"];
+let nomeAleatorio = Math.floor(Math.random() * 6); 
+let hexaAleatorio = Math.floor(Math.random() * 6); 
 let pontos = 0;
 
-function certo(){
-    pontos += 1;
-    idPonto.innerHTML = `${pontos} pontos`;
-    idPonto.style.color = "green";
+bloco.style.backgroundColor = `${hexaCor[hexaAleatorio]}`;
+bloco.innerText = `${nomeCor[nomeAleatorio]}`;
+idPonto.innerHTML = `${pontos} pontos`;
+
+ativarIntervalo();
+
+function certo(){ 
+    if(nomeAleatorio == hexaAleatorio){
+        pontos += 1;
+        idPonto.innerHTML = `${pontos} pontos`;
+        idPerdeGanha.style.color = 'green';
+        idPerdeGanha.innerHTML = 'acertou +1 ponto';
+    }else{
+        pontos -= 1;
+        idPonto.innerHTML = `${pontos} pontos`;
+        idPerdeGanha.style.color = 'red';
+        idPerdeGanha.innerHTML = 'errou -1 ponto';
+    }
+
+    nomeAleatorio = Math.floor(Math.random() * 6);
+    hexaAleatorio = Math.floor(Math.random() * 6);
+    bloco.style.backgroundColor = `${hexaCor[hexaAleatorio]}`;
+    bloco.innerText = `${nomeCor[nomeAleatorio]}`;
 }
 
 function errado(){
+    if(nomeAleatorio != hexaAleatorio){
+        pontos += 1;
+        idPonto.innerHTML = `${pontos} pontos`;
+        idPerdeGanha.style.color = 'green';
+        idPerdeGanha.innerHTML = 'acertou +1 ponto'
+    }else{
+        pontos -= 1;
+        idPonto.innerHTML = `${pontos} pontos`;
+        idPerdeGanha.style.color = 'red';
+        idPerdeGanha.innerHTML = 'errou -1 ponto';
+    }
 
+    nomeAleatorio = Math.floor(Math.random() * 6);
+    hexaAleatorio = Math.floor(Math.random() * 6);
+    bloco.style.backgroundColor = `${hexaCor[hexaAleatorio]}`;
+    bloco.innerText = `${nomeCor[nomeAleatorio]}`;
 }

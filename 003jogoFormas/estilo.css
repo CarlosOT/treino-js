@@ -1,5 +1,5 @@
 body{
-    background-color: #ffff00;
+    background-color: #000000;
     color: black;
     font: 15pt normal;
     text-align: center;
@@ -10,7 +10,7 @@ body{
     text-align: center;
 
 }section{
-    background-color: white;
+    background-color: #00ffdd;
     width: 200px;
     height: 200px;
     line-height: 200px;
@@ -28,7 +28,11 @@ body{
     margin: 5px 10px 10px 10px;
 }a{
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.679);
+    color: #ebebebad;
+}p{
+    color: #ebebebad;
+}h1{
+    color: #ebebebad;
 }
 
 /*ID*/
@@ -40,5 +44,12 @@ body{
 }#pontos{
     font-weight: bold;
     font-size: 25px;
-    color: rgba(0, 0, 0, 0.679);
+    color: #ebebebad;
+}#textoBola{
+    color: black;
+    font-weight: bold;
+}#perdeGanha{
+    font-size: 20px;
+    margin-top: -15px;
+    margin-bottom: 15px;
 }
