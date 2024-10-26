@@ -29,14 +29,17 @@ let hexaCor = ["#ffff00", "#ff0000", "#0800ff", "#00ff08", "#e100ff", "#ff8c00"]
 let nomeAleatorio = Math.floor(Math.random() * 6); 
 let hexaAleatorio = Math.floor(Math.random() * 6); 
 let pontos = 0;
+let temporizadorLigado = false;
+let temporizadorDesligado = false;
 
 bloco.style.backgroundColor = `${hexaCor[hexaAleatorio]}`;
 bloco.innerText = `${nomeCor[nomeAleatorio]}`;
 idPonto.innerHTML = `${pontos} pontos`;
 
-ativarIntervalo();
-
 function certo(){ 
+    if(temporizadorLigado == false && temporizadorDesligado == false){
+        ativarIntervalo();
+    }
     if(nomeAleatorio == hexaAleatorio){
         pontos += 1;
         idPonto.innerHTML = `${pontos} pontos`;
@@ -53,9 +56,13 @@ function certo(){
     hexaAleatorio = Math.floor(Math.random() * 6);
     bloco.style.backgroundColor = `${hexaCor[hexaAleatorio]}`;
     bloco.innerText = `${nomeCor[nomeAleatorio]}`;
+    temporizadorDesligado = true;
 }
 
 function errado(){
+    if(temporizadorLigado == false && temporizadorDesligado == false){
+        ativarIntervalo();
+    }
     if(nomeAleatorio != hexaAleatorio){
         pontos += 1;
         idPonto.innerHTML = `${pontos} pontos`;
@@ -72,4 +79,5 @@ function errado(){
     hexaAleatorio = Math.floor(Math.random() * 6);
     bloco.style.backgroundColor = `${hexaCor[hexaAleatorio]}`;
     bloco.innerText = `${nomeCor[nomeAleatorio]}`;
+    temporizadorDesligado = true;
 }
